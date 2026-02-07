@@ -91,7 +91,7 @@ body {
     bottom: 20px;
     right: 20px;
     margin-top: 0;
-    opacity: 0.2;
+    opacity: 1;
     transition: opacity 0.3s;
     transform: scale(0.7);
     z-index: 2;
@@ -100,7 +100,8 @@ body {
 }
 
 .secret-answer .cute-btn {
-    font-size: 0.8rem;
+    font-size: 1.0rem;
+    font-weight: bold;
     padding: 5px 10px;
 }
 
