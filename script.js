@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
     validateConfig();
 
     // Set texts from config
-    document.getElementById('valentineTitle').textContent = `${config.valentineName}, my love...`;
+    document.getElementById('valentineTitle').textContent = `${config.GalentineName}, my love...`;
     
     // Set first question texts
     document.getElementById('question1Text').textContent = config.questions.first.text;
@@ -116,12 +116,24 @@ function setRandomPosition(element) {
 
 // Function to show next question
 function showNextQuestion(questionNumber) {
+    // ✨ AUTO-PLAY MUSIC WHEN MOVING TO NEXT QUESTION ✨
+    const bgMusic = document.getElementById('bgMusic');
+    if (bgMusic && bgMusic.paused && config.music.enabled) {
+        bgMusic.play().catch(err => console.log("Music play prevented:", err));
+    }
+    
     document.querySelectorAll('.question-section').forEach(q => q.classList.add('hidden'));
     document.getElementById(`question${questionNumber}`).classList.remove('hidden');
 }
 
 // Function to move the "No" button when clicked
 function moveButton(button) {
+    // ✨ AUTO-PLAY MUSIC WHEN BUTTON IS CLICKED ✨
+    const bgMusic = document.getElementById('bgMusic');
+    if (bgMusic && bgMusic.paused && config.music.enabled) {
+        bgMusic.play().catch(err => console.log("Music play prevented:", err));
+    }
+    
     const x = Math.random() * (window.innerWidth - button.offsetWidth);
     const y = Math.random() * (window.innerHeight - button.offsetHeight);
     button.style.position = 'fixed';
@@ -175,6 +187,12 @@ window.addEventListener('load', setInitialPosition);
 
 // Celebration function
 function celebrate() {
+    // ✨ AUTO-PLAY MUSIC WHEN THEY SAY YES! ✨
+    const bgMusic = document.getElementById('bgMusic');
+    if (bgMusic && bgMusic.paused && config.music.enabled) {
+        bgMusic.play().catch(err => console.log("Music play prevented:", err));
+    }
+    
     document.querySelectorAll('.question-section').forEach(q => q.classList.add('hidden'));
     const celebration = document.getElementById('celebration');
     celebration.classList.remove('hidden');
@@ -239,4 +257,4 @@ function setupMusicPlayer() {
             musicToggle.textContent = config.music.startText;
         }
     });
-} 
+}
